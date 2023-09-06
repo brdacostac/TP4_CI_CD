@@ -1,0 +1,16 @@
+kind: pipeline
+type: docker
+name: CI_Book
+
+trigger :
+    event:
+        - push
+steps:
+  -name : build
+  image : mcr.microsoft.com/dotnet/sdk:7.0
+  commands:
+        - cd Sources
+        - dotnet workload restore
+        - dotnet restore OpenLibraryWS_Wrapper.sln
+        - dotnet build OpenLibraryWS_Wrapper.sln -c Release --no-restore
+        - dotnet publish OpenLibraryWS_Wrapper.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release
