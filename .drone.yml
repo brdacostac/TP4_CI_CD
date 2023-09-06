@@ -40,3 +40,12 @@ steps:
       sonar_token:
         from_secret: SECRET_SONAR_LOGIN
     depends_on: [tests]
+
+    - name: generate-and-deploy-docs
+      image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-docdeployer
+      failure: ignore
+      volumes:
+        - name: docs
+          path: /docs
+      commands:
+        - /entrypoint.sh
