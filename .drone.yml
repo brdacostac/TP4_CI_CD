@@ -10,7 +10,6 @@ steps:
     image : mcr.microsoft.com/dotnet/sdk:7.0
     commands:
           - cd Sources
-          - dotnet workload restore
           - dotnet restore OpenLibraryWS_Wrapper.sln
           - dotnet build OpenLibraryWS_Wrapper.sln -c Release --no-restore
           - dotnet publish OpenLibraryWS_Wrapper.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release
@@ -19,7 +18,24 @@ steps:
     image: mcr.microsoft.com/dotnet/sdk:7.0
     commands:
       - cd Sources
-      - dotnet workload restore
       - dotnet restore OpenLibraryWS_Wrapper.sln
       - dotnet test OpenLibraryWS_Wrapper.sln --no-restore
     depends_on: [build]
+
+  - name: code-analysis
+    image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet7
+    commands:
+      - cd Sources/
+      - dotnet restore OpenLibraryWS_Wrapper.sln
+      - dotnet sonarscanner begin /k:OpenLibraryWS_Wrapper-Bruno /d:sonar.host.url=$${PLUGIN_SONAR_HOST} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions="Tests/**" /d:sonar.login=$${PLUGIN_SONAR_TOKEN} 
+      - dotnet build OpenLibraryWS_Wrapper.sln -c Release --no-restore
+      - dotnet test OpenLibraryWS_Wrapper.sln --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
+      - reportgenerator -reports:"**/coverage.cobertura.xml" -reporttypes:SonarQube -targetdir:"coveragereport"
+      - dotnet publish OpenLibraryWS_Wrapper.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release -f:net7.0-android /p:AndroidSdkDirectory=/usr/lib/android-sdk
+      - dotnet sonarscanner end /d:sonar.login=$${PLUGIN_SONAR_TOKEN}
+    secrets: [ SECRET_SONAR_LOGIN ]
+    settings:
+      sonar_host: https://codefirst.iut.uca.fr/sonar/
+      sonar_token:
+        from_secret: SECRET_SONAR_LOGIN
+    depends_on: [tests]
