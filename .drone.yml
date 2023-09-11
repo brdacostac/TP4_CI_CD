@@ -30,7 +30,7 @@ steps:
       - dotnet sonarscanner begin /k:"OpenLibraryWS_Wrapper-Bruno" /d:sonar.host.url=$${PLUGIN_SONAR_HOST} /n:"OpenLibraryWS_Wrapper-Bruno" /d:sonar.login=$${PLUGIN_SONAR_TOKEN}
       - dotnet build
       - dotnet sonarscanner end /d:sonar.login=$${PLUGIN_SONAR_TOKEN}
-      - dotnet publish OpenLibraryWS_Wrapper.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release -f:net7.0-android /p:AndroidSdkDirectory=/usr/lib/android-sdk
+      - dotnet publish OpenLibraryWS_Wrapper.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release
     secrets: [ SECRET_SONAR_LOGIN ]
     settings:
       sonar_host: https://codefirst.iut.uca.fr/sonar/
