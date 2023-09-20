@@ -74,6 +74,7 @@ steps:
   - name: hadolint
     image: hadolint/hadolint:latest-debian
     commands:
+      - cd Sources
       - hadolint Dockerfile
 
   - name: docker-build-and-push
