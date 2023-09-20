@@ -71,8 +71,6 @@ steps:
   #   depends_on: [generate-swashbuckle]
 
 
-
-  # docker image build
   - name: docker-build-and-push
     image: plugins/docker
     settings:
