@@ -75,7 +75,7 @@ steps:
     image: hadolint/hadolint:latest-debian
     commands:
       - hadolint  Dockerfile
-      depends_on: [docker-build-and-push,deploy-container]
+    depends_on: [docker-build-and-push,deploy-container]
 
   - name: docker-build-and-push
     image: plugins/docker
