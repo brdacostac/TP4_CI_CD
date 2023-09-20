@@ -79,7 +79,7 @@ steps:
        dockerfile: Sources/Dockerfile
        context: Sources/
        registry: hub.codefirst.iut.uca.fr
-       repo: hub.codefirst.iut.uca.fr/bruno.da_costa_cunha/OpenLibraryWS_Wrapper
+       repo: hub.codefirst.iut.uca.fr/bruno.da_costa_cunha/openlibrarywswrapper
        username:
          from_secret: SECRET_REGISTRY_USERNAME
        password:
@@ -88,7 +88,7 @@ steps:
   - name: deploy-container
     image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-dockerproxy-clientdrone:latest
     environment:
-        IMAGENAME: hub.codefirst.iut.uca.fr/bruno.da_costa_cunha/OpenLibraryWS_Wrapper
+        IMAGENAME: hub.codefirst.iut.uca.fr/bruno.da_costa_cunha/openlibrarywswrapper
         CONTAINERNAME: openlibrarybrunocunha
         COMMAND: create
         OVERWRITE: true
