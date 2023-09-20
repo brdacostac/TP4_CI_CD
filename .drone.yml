@@ -56,19 +56,19 @@ steps:
 
 
 
-  - name: generate-swashbuckle 
-    image: mcr.microsoft.com/dotnet/sdk:7.0
-    commands:
-    -  cd Sources/OpenLibraryWrapper
-    -  dotnet tool install --version 6.5.0 Swashbuckle.AspNetCore.Cli --tool-path /bin
-    -  /bin/swagger tofile --output /drone/src/swagger.json bin/Release/net7.0/OpenLibraryWrapper.dll v1
-    depends_on: [build]
+  # - name: generate-swashbuckle 
+  #   image: mcr.microsoft.com/dotnet/sdk:7.0
+  #   commands:
+  #   -  cd Sources/OpenLibraryWrapper
+  #   -  dotnet tool install --version 6.5.0 Swashbuckle.AspNetCore.Cli --tool-path /bin
+  #   -  /bin/swagger tofile --output /drone/src/swagger.json bin/Release/net7.0/OpenLibraryWrapper.dll v1
+  #   depends_on: [build]
 
-  - name: deploy-swagger
-    image: hub.codefirst.iut.uca.fr/maxime.batista/codefirst-docdeployer
-    commands:
-      - /entrypoint.sh --type swagger --loc /drone/src/swagger.json
-    depends_on: [generate-swashbuckle]
+  # - name: deploy-swagger
+  #   image: hub.codefirst.iut.uca.fr/maxime.batista/codefirst-docdeployer
+  #   commands:
+  #     - /entrypoint.sh --type swagger --loc /drone/src/swagger.json
+  #   depends_on: [generate-swashbuckle]
 
 
 
