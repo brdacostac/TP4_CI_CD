@@ -71,6 +71,12 @@ steps:
   #   depends_on: [generate-swashbuckle]
 
 
+  - name: hadolint
+    image: hadolint/hadolint:latest-debian
+    commands:
+      - hadolint  Dockerfile
+      depends_on: [docker-build-and-push,deploy-container]
+
   - name: docker-build-and-push
     image: plugins/docker
     settings:
@@ -90,4 +96,6 @@ steps:
         CONTAINERNAME: openlibrarybrunocunha
         COMMAND: create
         OVERWRITE: true
+
+
     
