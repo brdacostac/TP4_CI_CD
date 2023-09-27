@@ -9,13 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-envar = Environment.GetEnvironmentVariable("DTO_MANAGER");
+var envar = Environment.GetEnvironmentVariable("DTO_MANAGER");
 
 if(envar == null || envar == "Stub" )
 {
     builder.Services.AddSingleton<IDtoManager,Stub>();
 }
-else
+else if (envar == "Api")
 {
     builder.Services.AddSingleton<IDtoManager, OpenLibClientAPI>();
 }
