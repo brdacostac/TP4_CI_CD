@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenLibraryClient", "OpenLibraryClient\OpenLibraryClient.csproj", "{3A429457-D882-44E3-B65E-107554C2E91F}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{867E4F8B-AE6B-4FEA-A06E-E04596BAD467}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{3A429457-D882-44E3-B65E-107554C2E91F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A429457-D882-44E3-B65E-107554C2E91F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A429457-D882-44E3-B65E-107554C2E91F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{867E4F8B-AE6B-4FEA-A06E-E04596BAD467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{867E4F8B-AE6B-4FEA-A06E-E04596BAD467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{867E4F8B-AE6B-4FEA-A06E-E04596BAD467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{867E4F8B-AE6B-4FEA-A06E-E04596BAD467}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
