@@ -94,7 +94,7 @@ steps:
     image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-dockerproxy-clientdrone:latest
     environment:
         IMAGENAME: hub.codefirst.iut.uca.fr/bruno.da_costa_cunha/openlibrarywswrapper
-        CONTAINERNAME: openlibrarybrunocunha
+        CONTAINERNAME: bruno_wrapperlibrary
         COMMAND: create
         OVERWRITE: true
     depends_on: [hadolint]
