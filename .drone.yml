@@ -97,7 +97,7 @@ steps:
         CONTAINERNAME: bruno_wrapperlibrary
         COMMAND: create
         OVERWRITE: true
-    depends_on: [hadolint]
+    depends_on: [docker-build-and-push]
 
 
     
