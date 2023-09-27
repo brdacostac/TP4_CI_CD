@@ -14,7 +14,7 @@ COPY ["OpenLibraryClient/OpenLibraryClient.csproj", "OpenLibraryClient/"]
 RUN dotnet restore "OpenLibraryWrapper/OpenLibraryWrapper.csproj"
 COPY . .
 WORKDIR "/src/OpenLibraryWrapper"
-ARG DTO_MANAGER=Api
+ARG DTO_MANAGER=mariadb
 RUN dotnet build "OpenLibraryWrapper.csproj" -c Release -o /app/build
 
 FROM build AS publish
