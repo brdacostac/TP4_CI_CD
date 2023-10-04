@@ -11,14 +11,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 var envar = Environment.GetEnvironmentVariable("DTO_MANAGER");
 
-if(envar == null || envar == "Stub" )
+if(envar == null || envar == "stub" )
 {
     builder.Services.AddSingleton<IDtoManager,Stub>();
 }
-else if (envar == "Api")
+else if (envar == "api")
 {
     builder.Services.AddSingleton<IDtoManager, OpenLibClientAPI>();
 }
+else if (envar == "mariadb")
+{
+    builder.Services.AddSingleton<IDtoManager, MyLibraryMgr>();
+}
+
 builder.Services.AddSingleton<IDtoManager,OpenLibClientAPI>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
