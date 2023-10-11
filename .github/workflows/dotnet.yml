@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore Sources/OpenLibraryWS_Wrapper.sln
+      run: dotnet restore ../Sources/OpenLibraryWS_Wrapper.sln
     - name: Build
-      run: dotnet build Sources/OpenLibraryWS_Wrapper.sln -c Release--no-restore
+      run: dotnet build ../Sources/OpenLibraryWS_Wrapper.sln -c Release--no-restore
     - name: Test
-      run: dotnet test  Sources/OpenLibraryWS_Wrapper.sln --no-build --verbosity normal
+      run: dotnet test  ../Sources/OpenLibraryWS_Wrapper.sln --no-build --verbosity normal
